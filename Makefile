@@ -16,7 +16,6 @@ compile:
 # Set up the program to run 5 minutes from now and then at every subsequent startup
 setup-cron:
 	@echo "@reboot $(PWD)/$(BINARY_PATH)" | crontab -
-	echo "$(PWD)/$(BINARY_PATH)" | at now + 5 minutes
 
 uninstall:
 	@pkill -f $(BINARY_NAME) || true

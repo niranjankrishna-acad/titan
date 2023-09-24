@@ -12,10 +12,5 @@ Before you can run `titan`, ensure you have the following prerequisites installe
 
 3. **play (from SoX)**: For the beeping functionality, `titan` uses the `play` command from the SoX package. Install SoX from your package manager or from the [official website](http://sox.sourceforge.net/).
 
-4. **at**: `titan` may utilize the `at` command for scheduling tasks. Install it using your package manager. For example, on Debian-based systems:
-
-   ```bash
-   sudo apt-get install at
-
 
 To install titan, run - ```make build```
