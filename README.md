@@ -16,3 +16,6 @@ Before you can run `titan`, ensure you have the following prerequisites installe
 
    ```bash
    sudo apt-get install at
+
+
+To install titan, run - ```make build```
