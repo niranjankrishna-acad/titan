@@ -11,7 +11,7 @@ dev:
 build: compile setup-cron
 
 compile:
-	cargo build --release -- -c $(CHECK_INTERVAL)
+	cargo build --release 
 
 # Set up the program to run 5 minutes from now and then at every subsequent startup
 setup-cron:
