@@ -1,0 +1,11 @@
+[Unit]
+Description=Titan Service
+
+[Service]
+ExecStart=__EXECSTART__
+Restart=always
+Environment=PATH=/usr/bin:/usr/local/bin
+WorkingDirectory=__WORKINGDIR__
+
+[Install]
+WantedBy=multi-user.target
