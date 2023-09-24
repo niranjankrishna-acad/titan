@@ -1,20 +1,27 @@
 # Variables
 BINARY_NAME=titan
 BINARY_PATH=target/release/$(BINARY_NAME)
+CHECK_INTERVAL ?= 1
 
 # Compile and run the program in development mode
 dev:
-	cargo run
+	cargo run  -- -c $(CHECK_INTERVAL)
 
-# Build the program as a packaged binary
-build:
-	cargo build --release
+# Build the program as a packaged binary and set up as a cron job
+build: compile setup-cron
 
-# Set up the program as a cron job to run at startup indefinitely
+compile:
+	cargo build --release -- -c $(CHECK_INTERVAL)
+
+# Set up the program to run 5 minutes from now and then at every subsequent startup
 setup-cron:
-	@echo "@reboot sleep 300 && $(PWD)/$(BINARY_PATH)" | crontab -
+	@echo "@reboot $(PWD)/$(BINARY_PATH)" | crontab -
+	echo "$(PWD)/$(BINARY_PATH)" | at now + 5 minutes
 
-# Default target (if you just run `make` without arguments)
+uninstall:
+	@pkill -f $(BINARY_NAME) || true
+	@crontab -l | grep -v "$(PWD)/$(BINARY_PATH)" | crontab -
+
 all: dev
 
-.PHONY: dev build setup-cron
+.PHONY: dev compile build setup-cron
