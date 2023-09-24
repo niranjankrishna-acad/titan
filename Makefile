@@ -1,7 +1,7 @@
 # Variables
 BINARY_NAME=titan
 BINARY_PATH=target/release/$(BINARY_NAME)
-CHECK_INTERVAL ?= 1
+CHECK_INTERVAL ?= 5
 
 # Compile and run the program in development mode
 dev:
